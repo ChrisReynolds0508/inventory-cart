@@ -33,22 +33,24 @@ export const renderCart = () => {
         const item = cart[id];
 
         const cartItem = document.createElement('div');
-    cartItem.style.display = 'flex';
-    cartItem.style.alignItems = 'center';
-    cartItem.style.gap = '8px';
+        cartItem.classList.add('cart-item');
 
         const cartText = document.createElement('p');
-        cartText.textContent = `${item.name}: ${item.quantity}`;
+        cartText.textContent = `${item.name}:`;
         cartItem.appendChild(cartText);
 
         const removeButton = document.createElement('button');
-   removeButton.textContent = item.quantity > 0 ? '-':'Remove from Cart';
-
-   removeButton.addEventListener('click', () => {
-removeFromCart(id);
+        removeButton.textContent = item.quantity > 1 ? '-':'Remove';
+        removeButton.addEventListener('click', () => {
+        removeFromCart(id);
    })
-   cartItem.appendChild(removeButton);
-   
+        cartItem.appendChild(removeButton);
+
+        const quantityDisplay = document.createElement('span');
+        quantityDisplay.classList.add('quantity');
+        quantityDisplay.textContent = item.quantity;
+        cartItem.appendChild(quantityDisplay);
+
 
      const addButton = document.createElement('button');
     addButton.textContent = '+'

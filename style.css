@@ -9,7 +9,7 @@ body {
 }
 
 .container {
-  max-width: 800px;
+  max-width: 1200px;
   width: 100%;
   display: flex;
   gap: 20px;
@@ -59,13 +59,32 @@ body {
   background-color: #fafafa;
 }
 
-.cart > div {
+/* Cart item layout */
+.cart-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 12px;
+  gap: 10px;
 }
 
+.cart-item p {
+  flex: 1;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Quantity span styling */
+.cart-item span.quantity {
+  margin: 0 10px;
+  min-width: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Cart buttons */
 .cart button {
   padding: 4px 8px;
   background-color: #dc3545;
@@ -74,6 +93,7 @@ body {
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
+  min-width: 25px;
 }
 
 .cart button:hover {
