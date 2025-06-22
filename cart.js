@@ -31,8 +31,23 @@ export const renderCart = () => {
     elements.cart.innerHTML = '';
     for(const id in cart){
         const item = cart[id];
+
+        const cartItem = document.createElement('div');
+    cartItem.style.display = 'flex';
+    cartItem.style.alignItems = 'center';
+    cartItem.style.gap = '8px';
+
         const cartText = document.createElement('p');
         cartText.textContent = `${item.name}: ${item.quantity}`;
-        elements.cart.appendChild(cartText);
+        cartItem.appendChild(cartText);
+
+        const removeButton = document.createElement('button');
+   removeButton.textContent = item.quantity > 1 ? '-':'Remove from Cart';
+
+   removeButton.addEventListener('click', () => {
+removeFromCart(id);
+   })
+   cartItem.appendChild(removeButton);
+   elements.cart.appendChild(cartItem)
     }
 }
