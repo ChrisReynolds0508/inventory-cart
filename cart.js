@@ -42,12 +42,23 @@ export const renderCart = () => {
         cartItem.appendChild(cartText);
 
         const removeButton = document.createElement('button');
-   removeButton.textContent = item.quantity > 1 ? '-':'Remove from Cart';
+   removeButton.textContent = item.quantity > 0 ? '-':'Remove from Cart';
 
    removeButton.addEventListener('click', () => {
 removeFromCart(id);
    })
    cartItem.appendChild(removeButton);
-   elements.cart.appendChild(cartItem)
+   
+
+     const addButton = document.createElement('button');
+    addButton.textContent = '+'
+    addButton.addEventListener('click' , () => {
+        const product = products.find(p => p.id == id);
+        if(product) addToCart(product)
+    })
+    cartItem.appendChild(addButton);
+    elements.cart.appendChild(cartItem);
     }
+
+  
 }
