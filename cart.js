@@ -87,5 +87,13 @@ export const renderCart = () => {
         renderCart();
     })
     elements.cart.appendChild(clearCartButton)
-    
+
+    let itemTotal = 0;
+    for(const id in cart){
+        const item = cart[id]
+        itemTotal += item.quantity
+    }
+    const itemCount = document.createElement('div');
+    itemCount.textContent = `Items in Cart: ${itemTotal}`
+    elements.cart.appendChild(itemCount)
 }
