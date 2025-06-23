@@ -63,12 +63,21 @@ export const renderCart = () => {
         addButton.addEventListener('click' , () => {
         const product = products.find(p => p.id == id);
         if(product) addToCart(product)
+
+            
     })
         cartItem.appendChild(addButton);
-        elements.cart.appendChild(cartItem);
-
-         
+        elements.cart.appendChild(cartItem);     
     }
+  let total = 0;
 
+    for (const id in cart) {
+    const item = cart[id];
+    total += item.price * item.quantity;
+}
+        const totalPrice = document.createElement('div');
+        totalPrice.classList.add('totalPrice');
+        totalPrice.textContent = `Total: $${total.toFixed(2)}`
+        elements.cart.appendChild(totalPrice)
   
 }
