@@ -80,4 +80,12 @@ export const renderCart = () => {
         totalPrice.textContent = `Total: $${total.toFixed(2)}`
         elements.cart.appendChild(totalPrice)
   
+    const clearCartButton = document.createElement('button');
+    clearCartButton.textContent = 'Clear Cart';
+    clearCartButton.addEventListener('click', () => {
+        Object.keys(cart).forEach(key => delete cart[key])
+        renderCart();
+    })
+    elements.cart.appendChild(clearCartButton)
+    
 }
