@@ -11,6 +11,7 @@ if(cart[id]){
 }else {
     cart[id] = {
         name : product.name,
+        price: product.price,
         quantity :1
     };
 };
@@ -46,20 +47,27 @@ export const renderCart = () => {
    })
         cartItem.appendChild(removeButton);
 
+        const itemPrice = document.createElement('span');
+        itemPrice.classList.add('itemPrice');
+        itemPrice.textContent = `$${(item.quantity * item.price).toFixed(2)}`;
+        cartItem.appendChild(itemPrice)
+
         const quantityDisplay = document.createElement('span');
         quantityDisplay.classList.add('quantity');
         quantityDisplay.textContent = item.quantity;
         cartItem.appendChild(quantityDisplay);
 
 
-     const addButton = document.createElement('button');
-    addButton.textContent = '+'
-    addButton.addEventListener('click' , () => {
+        const addButton = document.createElement('button');
+        addButton.textContent = '+'
+        addButton.addEventListener('click' , () => {
         const product = products.find(p => p.id == id);
         if(product) addToCart(product)
     })
-    cartItem.appendChild(addButton);
-    elements.cart.appendChild(cartItem);
+        cartItem.appendChild(addButton);
+        elements.cart.appendChild(cartItem);
+
+         
     }
 
   
